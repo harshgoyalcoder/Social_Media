@@ -17,7 +17,7 @@ export default function Post({ post }) {
   // Hardcoded currentUser for demonstration purposes
   const currentUser = {
     _id: 1,
-    username: "JohnDoe",
+    username: "Mr. Harsh",
   };
 
   useEffect(() => {

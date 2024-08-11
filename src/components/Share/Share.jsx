@@ -10,7 +10,7 @@ export default function Share() {
   // Dummy user data
   const user = {
     _id: 1,
-    username: "JohnDoe",
+    username: "Mr. Harsh",
     profilePicture: "person/noAvatar.png",
   };
 

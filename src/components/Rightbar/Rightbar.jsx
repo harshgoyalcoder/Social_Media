@@ -9,7 +9,7 @@ import Remove from "@mui/icons-material/Remove";
 // Hardcoded current user and profile user for demonstration
 const currentUser = {
   id: 1,
-  username: "JohnDoe",
+  username: "Mr. Harsh",
   following: [2, 3], // Example of followed user IDs
 };
 
