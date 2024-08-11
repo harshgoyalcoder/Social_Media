@@ -1,83 +1,84 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './Post.css';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import axios from 'axios';
-import {format} from "timeago.js";
-import {Link} from "react-router-dom";
-import { AuthContext } from '../../context/AuthContext';
+import React, { useState, useEffect } from "react";
+import "./Post.css";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
-export default function Post({post}) {
-const [like,setLike]=useState(post.likes.length);
-const [isLiked,setIsLiked]=useState(false);
-const [user,setUser]=useState({});
-const PF=process.env.REACT_APP_PUBLIC_FOLDER;
-const {user:currentUser}=useContext(AuthContext);
+// Dummy data
+import { Users } from "../../dummyData";
 
-useEffect(()=>{
- setIsLiked(post.likes.includes(currentUser._id))
-},[currentUser._id,post.likes])
+export default function Post({ post }) {
+  // Set default values to avoid undefined issues
+  const [like, setLike] = useState(post.like || 0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [user, setUser] = useState({});
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-useEffect(()=>{
-  const fetchUser=async()=>{
-    const res=await axios.get(`/users?userId=${post.userId}`)
-    setUser(res.data);
-
+  // Hardcoded currentUser for demonstration purposes
+  const currentUser = {
+    _id: 1,
+    username: "JohnDoe",
   };
-  fetchUser();
-},[post.userId])
 
-const likeHandler=()=>{
-  try{
-    axios.put("/posts/"+post._id+"/like",{userId:currentUser._id})
-  }catch(err){}
-  setLike(isLiked ? like-1:like+1);
-  setIsLiked(!isLiked);
-}
+  useEffect(() => {
+    // Ensure post.likes is always an array
+    setIsLiked(post.likes ? post.likes.includes(currentUser._id) : false);
+  }, [currentUser._id, post.likes]);
+
+  useEffect(() => {
+    // Find user from dummy data
+    const foundUser = Users.find((u) => u.id === post.userId);
+    setUser(foundUser || {}); // Handle case where user might not be found
+  }, [post.userId]);
+
+  const likeHandler = () => {
+    // Simulate like functionality
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   return (
-    <div className='post'>
+    <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
             <Link to={`profile/${user.username}`}>
-            <img className='postTopLeftImg' src={user.profilePicure? PF+user.profilePicure: PF+"person/noAvatar.png"} alt=''/>
+              <img
+                className="postTopLeftImg"
+                src={
+                  user.profilePicture
+                    ? PF + user.profilePicture
+                    : PF + "person/noAvatar.png"
+                }
+                alt=""
+              />
             </Link>
-              <span>
-                {user.username}
-              </span>
-              <span>{format(post.createdAt)}</span>
-            
-
+            <span>{user.username}</span>
+            <span>{format(post.date)}</span>
           </div>
 
           <div className="postTopRight">
-           <MoreVertIcon/>
+            <MoreVertIcon />
           </div>
-
         </div>
 
         <div className="postCenter">
-           <span>{post?.des}</span>
-            <img src={PF+post.img} alt=''/>
-
-
+          <span>{post.desc}</span>
+          <img src={PF + post.photo} alt="" />
         </div>
 
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img src={`${PF}/like.png`} alt='' onClick={likeHandler}/>
-            <img src={`${PF}/heart.png`} alt='' onClick={likeHandler}/>
+            <img src={`${PF}/like.png`} alt="" onClick={likeHandler} />
+            <img src={`${PF}/heart.png`} alt="" onClick={likeHandler} />
             <span>{like} people liked it</span>
-
           </div>
 
           <div className="postBottomRight">
-            <span>{post.comment} comments</span>
+            <span>{post.comment || 0} comments</span>
           </div>
-
         </div>
       </div>
-      
     </div>
-  )
+  );
 }
