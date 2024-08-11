@@ -1,0 +1,85 @@
+.messenger{
+    display: flex;
+    height: calc(100vh-70px);
+
+}
+
+
+
+
+.chatMenu{
+    flex: 3.5;
+}
+
+.chatMenu>div{
+    padding: 10px;
+    height: 100%;
+
+}
+.chatMenu>div>input{
+    width: 90%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+
+
+
+.chatBox{
+  flex: 5.5;
+}
+.chatBox>div{
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.chatBox>div>div:nth-child(1){
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 10px; 
+}
+.chatBox>div>div:nth-child(2){
+    display: flex;
+    margin-top: 5px;
+    /* margin-left: 10px; */
+    align-items: center;
+    justify-content: space-between;
+
+}
+.chatBox>div>div:nth-child(2)>textarea{
+    width: 70%;
+    height: 60px;
+    padding: 10px;
+}
+.chatBox>div>div:nth-child(2)>button{
+ width: 70px;
+ height: 40px;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ color: white;
+ background-color: teal;
+}
+
+
+
+.chatOnline{
+  flex: 3;
+}
+.chatOnline>div{
+    padding: 10px;
+    height: 100%;
+
+}
+.noConversation{
+    position: absolute;
+    top: 10%;
+    font-size: 50px;
+    color: rgb(224, 220, 220);
+    cursor: default;
+
+}

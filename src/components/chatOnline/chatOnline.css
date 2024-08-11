@@ -1,0 +1,32 @@
+.chatOnlineFriend{
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+  position: relative;
+}
+
+.chatOnlineFriend>div:nth-child(1){
+  margin-right: 10px;
+ 
+}
+.chatOnlineFriend>div:nth-child(1)>img{
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+}
+.chatOnlineFriend>div:nth-child(2){
+  width: 10px;
+  height: 10px;
+  background-color: limegreen;
+  position: absolute;
+  top: 12px;
+  left: 40px;
+  border-radius: 50%;
+}
+.chatSpan{
+
+}

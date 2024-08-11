@@ -1,0 +1,114 @@
+.topbarContainer{
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    width: 100%;
+    background-color: blue;
+    position: sticky;
+    z-index: 99;
+    top: 0;
+}
+.topbarLeft{
+    margin-left: 1rem;
+    margin-right: -2rem;
+    font-size: x-large;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    flex: 3;
+}
+
+.topbarCenter{
+    flex:5 1;
+    background: white;
+    border-radius: 20px;
+    padding: 7px;
+    height: 1.2rem;
+
+}
+
+.topbarCenter>div{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.searchIcon{
+    position: relative;
+    top: -2px;
+    right: -2px;
+    margin-right: -4px;
+}
+.searchInput{
+    border: 0px;
+    font-size: 14px;
+    width: 80%;
+    height: 1rem;
+}
+.searchInput:focus{
+    outline: none;
+}
+
+
+.topbarRight{
+    flex: 4;
+    display: flex;
+    gap: 2rem;
+    /* margin-right:-50px; */
+    margin-left:40px ;
+
+
+}
+
+.topbarRight>:nth-child(1){
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+
+.topbarRight>:nth-child(2){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+    margin-right: 20px;
+
+}
+.topbarRight>:nth-child(2)>div{
+    position: relative;
+
+}
+.topbarRight>:nth-child(2)>div>span{
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    font-size: 13px;
+    text-align: center;
+    top: -5px;
+    right: -5px;
+
+}
+
+
+
+.topbarRight-icons{
+    color: white;
+
+}
+
+.topbarImage{
+    width: 2.1rem;
+    height: 2.1rem;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+}
